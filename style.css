@@ -38,10 +38,42 @@
 .computer, .player{
     width: 33%;
     height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .score{
     width: 22%;
     height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 500%;
+    font-weight:bolder;
+    font-family: 'Courier New', Courier, monospace;
 }
+/* "name"
+"display-select"
+"display-select-text" */
+
+.display-select{
+    height: 70%;
+    width: 100%;
+}
+
+.name, .display-select-text{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 250%;
+    overflow: hidden;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
 
