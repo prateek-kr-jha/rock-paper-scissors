@@ -70,11 +70,14 @@
 
 .display-select{
     height: 70%;
-    width: 100%;
-    border: 2px solid;
+    width: 80%;
+    border: 5px solid;
     border-color: black;
-    border-radius: 10%;
+    border-radius: 7%;
     background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .name, .display-select-text{
@@ -106,4 +109,9 @@
 
 }
 
+.display-pic{
+    height: 75%;
+    background-color: whitesmoke;
+
+}
 
