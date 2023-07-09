@@ -38,66 +38,60 @@ function playRound(playerSelection, computerSelection){
     
 }
 
-// function game(){
-//     for(let i = 0; i < 5; i++){
-//         const playerSelection = prompt("Enter your choice");
-//         const computerSelection = getComputerSelection();
-//         console.log(playRound(playerSelection, computerSelection));
-//     }
-//     console.log(`Final Score: ${playerWins} - ${computerWins}`);
-//     if(playerWins > computerWins){
-//         console.log("WINNER!!!");
-//     } else if(computerWins > playerWins){
-//         console.log("LOOSERR!!!!!");
-//     } else {
-//         console.log("It's a DRAWWW!!!");
-//     }
-// }
+function game(e){
+    if(playerWins == 5 || computerWins == 5){
+        let messageDisplay = document.querySelector(".message");
+        messageDisplay.innerText = "Please restart game";
+        return;
 
-// game();
+    }
+    let playerSelection = e.target.className;
+    let computerSelection = getComputerSelection();
+
+    let playerSelectDiv = document.querySelector(".player .display-select-text");
+    playerSelectDiv.innerText = playerSelection[0].toUpperCase() + playerSelection.slice(1,);
+    let computerSelectDiv = document.querySelector(".computer .display-select-text");
+    computerSelectDiv.innerText = computerSelection;
+    let playerDisplay = document.querySelector(".player .display-select");
+    let computerDisplay = document.querySelector(".computer .display-select");
+    let playerImg = document.createElement("img");
+    let computerImg = document.createElement("img");
+    if(computerSelection == "Rock"){
+        computerImg["src"] = "./style/icons/noun-rock-711504.svg";
+
+    } else if(computerSelection == "Scissors"){
+        computerImg["src"] = "./style/icons/noun-scissors-5847042.svg";
+
+        
+    } else if(computerSelection == "Paper"){
+        computerImg["src"] = "./style/icons/noun-paper-135860.svg";
+
+    }
+
+    if(e.target.className == "rock"){
+        playerImg["src"] = "./style/icons/noun-rock-711504.svg";
+    } else if(e.target.className == "scissors"){
+        playerImg["src"] = "./style/icons/noun-scissors-5847042.svg";
+    } else if(e.target.className == "paper"){
+        playerImg["src"] = "./style/icons/noun-paper-135860.svg";
+    }
+    playerImg.className = "display-pic";
+    computerImg.className = "display-pic";
+
+    playerDisplay.innerHTML = "";
+    computerDisplay.innerHTML = "";
+    playerDisplay.appendChild(playerImg);
+    computerDisplay.appendChild(computerImg);
+    let winner = playRound(playerSelection, computerSelection);
+    console.log(winner);
+    let messageDisplay = document.querySelector(".message");
+    messageDisplay.innerText = winner;
+    let scoreDisplay = document.querySelector(".score");
+    scoreDisplay.innerText = `${computerWins} - ${playerWins}`;
+}
+
 
 let rpsButtons = document.querySelectorAll("img");
-// console.log(rpsButton);
 rpsButtons.forEach(button => {
-    button.addEventListener('click', (e) =>{
-
-        console.log(e.target.className, "hi");
-
-        let playerSelection = e.target.className;
-        let computerSelection = getComputerSelection();
-
-
-        let playerDisplay = document.querySelector(".player .display-select");
-        let computerDisplay = document.querySelector(".computer .display-select");
-        let playerImg = document.createElement("img");
-        let computerImg = document.createElement("img");
-        if(computerSelection == "Rock"){
-            computerImg["src"] = "./style/icons/noun-rock-711504.svg";
-
-        } else if(computerSelection == "Scissors"){
-            computerImg["src"] = "./style/icons/noun-scissors-5847042.svg";
-
-            
-        } else if(computerSelection == "Paper"){
-            computerImg["src"] = "./style/icons/noun-paper-135860.svg";
-
-        }
-
-        if(e.target.className == "rock"){
-            playerImg["src"] = "./style/icons/noun-rock-711504.svg";
-        } else if(e.target.className == "scissors"){
-            playerImg["src"] = "./style/icons/noun-scissors-5847042.svg";
-        } else if(e.target.className == "paper"){
-            playerImg["src"] = "./style/icons/noun-paper-135860.svg";
-        }
-        playerImg.className = "display-pic";
-        computerImg.className = "display-pic";
-
-        playerDisplay.innerHTML = "";
-        computerDisplay.innerHTML = "";
-        playerDisplay.appendChild(playerImg);
-        computerDisplay.appendChild(computerImg);
-        let winner = playRound(playerSelection, computerSelection);
-        console.log(winner);
-    })
+    button.addEventListener('click', game)
 })
